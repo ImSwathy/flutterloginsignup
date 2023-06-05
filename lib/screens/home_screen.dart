@@ -9,7 +9,6 @@ import '../utils/color_utils.dart';
 import 'Leaderboard.dart';
 import 'dashboard.dart';
 import 'Games.dart';
-import 'notes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,38 +26,48 @@ class _HomeScreenState extends State<HomeScreen> {
     if (currentPage == DrawerSections.dashboard) {
       container = DashboardPage();
     } else if (currentPage == DrawerSections.Leaderboard) {
-      container = LeaderboardPage();
+      container = progressPage();
     } else if (currentPage == DrawerSections.Games) {
-      container = GamesPage();
-    } else if (currentPage == DrawerSections.notes) {
-      container = NotesPage();
+      container = games();
+    } else if (currentPage == DrawerSections.signin_screen) {
+      container = SignInScreen();
     } else if (currentPage == DrawerSections.settings) {
       container = SettingsPage();
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 28, 127, 232),
+        // backgroundColor: Color.fromARGB(255, 28, 127, 232),
         title: Text("Physioplay"),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: <Color>[
+                  Color.fromARGB(255, 33, 150, 243),
+                  Color(0xFF059362)
+                ]),
+          ),
+        ),
       ),
       body: container,
       drawer: Drawer(
         child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                MyHeaderDrawer(),
-                MyDrawerList(),
-              ],
-            ),
+          child: Column(
+            children: [
+              const MyHeaderDrawer(),
+              MyDrawerList(),
+            ],
           ),
         ),
       ),
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget MyDrawerList() {
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 15,
       ),
       child: Column(
@@ -66,15 +75,23 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           menuItem(1, "Dashboard", Icons.dashboard_outlined,
               currentPage == DrawerSections.dashboard ? true : false),
-          menuItem(2, "Leaderboard", Icons.people_alt_outlined,
+          menuItem(2, "Progress", Icons.people_alt_outlined,
               currentPage == DrawerSections.Leaderboard ? true : false),
-          menuItem(3, "Games", Icons.event,
+          menuItem(3, "Games", Icons.games_outlined,
               currentPage == DrawerSections.Games ? true : false),
-          menuItem(4, "Notes", Icons.notes,
-              currentPage == DrawerSections.notes ? true : false),
-          Divider(),
-          menuItem(5, "Settings", Icons.settings_outlined,
+          menuItem(4, "Settings", Icons.settings_outlined,
               currentPage == DrawerSections.settings ? true : false),
+          const Divider(),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                child: Text("Logout"),
+                style: ElevatedButton.styleFrom(),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignInScreen()));
+                },
+              ))
         ],
       ),
     );
@@ -94,14 +111,12 @@ class _HomeScreenState extends State<HomeScreen> {
             } else if (id == 3) {
               currentPage = DrawerSections.Games;
             } else if (id == 4) {
-              currentPage = DrawerSections.notes;
-            } else if (id == 5) {
               currentPage = DrawerSections.settings;
             }
           });
         },
         child: Padding(
-          padding: EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
               Expanded(
@@ -115,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 flex: 3,
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                   ),
@@ -133,6 +148,6 @@ enum DrawerSections {
   dashboard,
   Leaderboard,
   Games,
-  notes,
   settings,
+  signin_screen,
 }

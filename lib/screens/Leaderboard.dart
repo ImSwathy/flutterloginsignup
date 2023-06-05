@@ -1,13 +1,8 @@
-
 import 'package:flutter/material.dart';
 
-class LeaderboardPage extends StatelessWidget {
+class progressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("Leaderboard Page"),
-      ),
-    );
+    return Scaffold(body: SingleChildScrollView());
   }
 }
