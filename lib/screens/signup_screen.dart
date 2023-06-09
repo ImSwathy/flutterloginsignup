@@ -18,6 +18,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailTextController = TextEditingController();
   final _controller = TextEditingController();
   final _controller1 = TextEditingController();
+  final _controller2 = TextEditingController();
+  final _controller3 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +66,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField(
-                    "Enter Age", Icons.person_outline, false, _controller),
+                reusableTextField("Enter Date of Birth", Icons.date_range,
+                    false, _controller),
+                const SizedBox(
+                  height: 20,
+                ),
+                reusableTextField("Enter Full Name", Icons.person_outline,
+                    false, _controller2),
                 const SizedBox(
                   height: 20,
                 ),
@@ -74,9 +81,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
+                reusableTextField("Enter Phone number", Icons.phone_in_talk,
+                    false, _controller3),
+                const SizedBox(
+                  height: 20,
+                ),
                 signInSignUpButton(context, false, () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()));
                 }),
               ],
             ),

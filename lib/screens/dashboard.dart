@@ -62,14 +62,9 @@ class DashboardPage extends StatelessWidget {
                                       color: Colors.blue,
                                       tiles: [
                                         const ListTile(
-                                          leading: Icon(Icons.boy_rounded),
-                                          title: Text("Height"),
-                                          subtitle: Text("170"),
-                                        ),
-                                        const ListTile(
-                                          leading: Icon(Icons.boy_rounded),
-                                          title: Text("Weight"),
-                                          subtitle: Text("70"),
+                                          leading: Icon(Icons.date_range),
+                                          title: Text("Date of Birth"),
+                                          subtitle: Text("17-06-2000"),
                                         ),
                                         const ListTile(
                                           leading:

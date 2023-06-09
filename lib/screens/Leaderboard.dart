@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class progressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SingleChildScrollView());
+    return Scaffold(body: SingleChildScrollView(
+      
+    ));
   }
 }

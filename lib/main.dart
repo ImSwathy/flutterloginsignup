@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proj/screens/signin_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:flutter_proj/screen_quiz/welcome/welcome_screen.dart';
+import 'package:camera/camera.dart';
+import 'models/Questions.dart';
+import 'vision_detector_views/pose_detector_view.dart';
 
-void main() {
+List<CameraDescription> cameras = [];
+final Changer changer = Changer();
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  cameras = await availableCameras();
+
   runApp(const MyApp());
 }
 
@@ -27,5 +40,16 @@ class MyApp extends StatelessWidget {
       ),
       home: const SignInScreen(),
     );
+  }
+}
+
+class Changer extends ChangeNotifier {
+  bool positionCapture = false;
+  double poseStanding = 0;
+  int selectedOpt = -1; //
+  late Question myQuestion; //
+
+  void notify() {
+    notifyListeners();
   }
 }

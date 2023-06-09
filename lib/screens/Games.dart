@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_proj/screen_quiz/welcome/welcome_screen.dart';
+import 'package:get/get.dart';
 
 class GamesPage extends StatefulWidget {
   @override
@@ -82,7 +84,12 @@ class _gamesState extends State<games> {
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: InkWell(
                         splashColor: Colors.black26,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WelcomeScreen()));
+                        },
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
