@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
+  
   //final GlobalKey<ExpansionTileCardState> cardA = new GlobalKey();
   //final GlobalKey<ExpansionTileCardState> cardB = new GlobalKey();
 
@@ -96,6 +97,8 @@ class DashboardPage extends StatelessWidget {
               ]))
         ],
       ),
-    ));
+    )
+    
+    );
   }
 }
